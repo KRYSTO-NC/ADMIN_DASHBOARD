@@ -12,7 +12,15 @@ const Login = () => {
   };
 
   return (
-    <Box m="20px">
+    <Box
+    
+    width="100%" // Largeur maximale
+    display="flex"
+    flexDirection="column"
+    alignItems="center"
+    justifyContent="center"
+    height="75vh" // Hauteur maximale
+  >
       <Header title="Connexion" subtitle="Connecter-vous pour acceder au dashboard" />
 
       <Formik
@@ -30,12 +38,13 @@ const Login = () => {
         }) => (
           <form onSubmit={handleSubmit}>
             <Box
-              display="grid"
-              gap="30px"
-              gridTemplateColumns="repeat(1, minmax(0, 1fr))"
-              sx={{
-                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
-              }}
+           display="grid"
+           gap="30px"
+           gridTemplateColumns="repeat(2, minmax(0, 2fr))" // Augmentation du nombre de colonnes et de leur largeur
+           sx={{
+             "& > div": { gridColumn: isNonMobile ? undefined : "span 2" }, // ajustement du 'gridColumn'
+           }}
+              
             >
               <TextField
                 fullWidth
