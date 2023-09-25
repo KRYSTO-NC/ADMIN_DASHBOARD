@@ -1,13 +1,13 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import { tokens } from "../../theme";
-import { mockDataTeam } from "../../data/mockData";
+import { tokens } from "../../../theme";
+import { mockDataTeam } from "../../../data/mockData";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlindedIcon from "@mui/icons-material/SecurityOutlined";
 
 import React from "react";
-import Header from "../../components/Header";
+import Header from "../../../components/Header";
 
 function Team() {
   const theme = useTheme();
