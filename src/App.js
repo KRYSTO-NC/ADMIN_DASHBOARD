@@ -1,6 +1,6 @@
 import { ColorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Topbar from "./scenes/private/global/Topbar";
 import Sidebar from "./scenes/private/global/Sidebar";
 import { useSelector } from "react-redux";
