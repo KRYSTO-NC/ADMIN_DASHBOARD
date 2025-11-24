@@ -1,17 +1,16 @@
 import { Box, Typography, useTheme } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../../theme";
 import { mockDataTeam } from "../../../data/mockData";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-import SecurityOutlindedIcon from "@mui/icons-material/SecurityOutlined";
-
-import React from "react";
+import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../../components/Header";
+import StyledDataGrid from "../../../components/StyledDataGrid";
 
 function Team() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
   const columns = [
     {
       field: "id",
@@ -19,7 +18,7 @@ function Team() {
     },
     {
       field: "name",
-      headername: "Nom",
+      headerName: "Nom",
       flex: 1,
       cellClassName: "name-collumn--cell",
     },
@@ -37,7 +36,7 @@ function Team() {
     },
     {
       field: "email",
-      headername: "Email",
+      headerName: "Email",
       flex: 1,
     },
     {
@@ -62,10 +61,10 @@ function Team() {
             ) : access === "user" ? (
               <LockOpenOutlinedIcon />
             ) : (
-              <SecurityOutlindedIcon />
+              <SecurityOutlinedIcon />
             )}
-            <Typography color={colors.grey[100]} sx={{ml:"5px"}}>
-
+            <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
+              {access}
             </Typography>
           </Box>
         );
@@ -75,38 +74,8 @@ function Team() {
 
   return (
     <Box m="20px">
-      <Header title="Equipe" subtitle="Gestion des utilisateurs" />
-      <Box 
-      m= "40px 0 0 0"
-      height="75vh"
-      sx={{
-        "& .MuiDataGrid-root": {
-            border: "none",
-        },
-        "& .MuiDataGrid-cell": {
-            borderBottom: "none"
-        },
-        "& .name-collumn--cell": {
-            color: colors.greenAccent[300],
-        },
-        "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.primary[700],
-            borderBottom:"none",
-        },
-
-        "& .MuiDataGrid-virtualScoller": {
-            
-            backgroundColor: colors.primary[400],
-        },  
-        "& .MuiDataGrid-footerContainer": {
-            borderTop: "none",
-            backgroundColor: colors.blueAccent[700],
-        },  
-        
-      }}
-      >
-        <DataGrid rows={mockDataTeam} columns={columns} />
-      </Box>
+      <Header title="Équipe" subtitle="Gestion des utilisateurs" />
+      <StyledDataGrid rows={mockDataTeam} columns={columns} />
     </Box>
   );
 }

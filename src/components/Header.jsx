@@ -1,5 +1,6 @@
 import { Typography, Box, useTheme } from "@mui/material";
 import { tokens } from "../theme";
+import PropTypes from "prop-types";
 
 const Header = ({ title, subtitle }) => {
   const theme = useTheme();
@@ -19,6 +20,11 @@ const Header = ({ title, subtitle }) => {
       </Typography>
     </Box>
   );
+};
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
 };
 
 export default Header;

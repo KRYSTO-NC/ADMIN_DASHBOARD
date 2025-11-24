@@ -1,70 +1,190 @@
-# Getting Started with Create React App
+# Admin Dashboard - Application React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Dashboard d'administration moderne construit avec React, Material-UI, Redux Toolkit et React Router.
 
-## Available Scripts
+## 🚀 Fonctionnalités
 
-In the project directory, you can run:
+- ✅ Authentification utilisateur avec JWT
+- ✅ Gestion des équipes et utilisateurs
+- ✅ Gestion des contacts
+- ✅ Gestion des factures
+- ✅ Thème sombre/clair dynamique
+- ✅ Interface responsive
+- ✅ Recherche et filtrage avancés
+- ✅ Gestion d'état avec Redux Toolkit
+- ✅ Notifications Toast
+- ✅ Gestion d'erreurs globale
 
-### `npm start`
+## 📋 Prérequis
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Node.js >= 14.x
+- npm ou yarn
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Installation
 
-### `npm test`
+1. Cloner le repository
+```bash
+git clone <repository-url>
+cd ADMIN_DASHBOARD
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Installer les dépendances
+```bash
+npm install
+```
 
-### `npm run build`
+3. Configurer les variables d'environnement
+```bash
+cp .env.example .env
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Modifier le fichier `.env` avec vos propres valeurs :
+```env
+REACT_APP_BASE_URL=http://localhost:8000
+REACT_APP_USERS_URL=/api/users
+REACT_APP_DOLIBAR_URL=https://crm.krysto.nc/api/index.php
+REACT_APP_DOLIBARR_API_KEY=your_api_key_here
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Démarrer l'application
+```bash
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+L'application sera accessible sur [http://localhost:3000](http://localhost:3000)
 
-### `npm run eject`
+## 📁 Structure du projet
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+ADMIN_DASHBOARD/
+├── public/
+├── src/
+│   ├── components/          # Composants réutilisables
+│   │   ├── ErrorBoundary.jsx
+│   │   ├── Header.jsx
+│   │   ├── LoadingSpinner.jsx
+│   │   ├── StyledDataGrid.jsx
+│   │   ├── AdminRoutes.jsx
+│   │   └── PrivateRoutes.jsx
+│   ├── constants/           # Constantes de l'application
+│   │   └── constants.js
+│   ├── data/               # Données mockées
+│   │   ├── mockData.js
+│   │   └── mockGeoFeatures.js
+│   ├── hooks/              # Hooks personnalisés
+│   │   ├── useAuth.js
+│   │   ├── useColorMode.js
+│   │   └── useToast.js
+│   ├── scenes/             # Pages de l'application
+│   │   ├── Login.jsx
+│   │   └── private/
+│   │       ├── dashboard/
+│   │       ├── team/
+│   │       ├── contacts/
+│   │       ├── invoices/
+│   │       └── global/
+│   │           ├── Sidebar.jsx
+│   │           └── Topbar.jsx
+│   ├── slices/             # Redux slices
+│   │   ├── apiSlice.js
+│   │   ├── authSlice.js
+│   │   └── userApiSlice.js
+│   ├── utils/              # Utilitaires
+│   ├── App.js
+│   ├── index.js
+│   ├── store.js
+│   └── theme.js
+├── .env
+├── .env.example
+├── .gitignore
+├── package.json
+└── README.md
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🎨 Thème
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+L'application supporte deux modes de thème :
+- Mode sombre (par défaut)
+- Mode clair
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Le thème peut être basculé via l'icône dans la barre de navigation supérieure.
 
-## Learn More
+## 🔐 Authentification
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+L'application utilise un système d'authentification basé sur JWT. Les tokens sont stockés dans localStorage et gérés via Redux.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Hooks personnalisés
 
-### Code Splitting
+- `useAuth()` - Gestion de l'authentification
+- `useColorMode()` - Gestion du thème
+- `useToast()` - Notifications toast
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📦 Composants réutilisables
 
-### Analyzing the Bundle Size
+### StyledDataGrid
+DataGrid MUI stylisé avec configuration par défaut.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```jsx
+<StyledDataGrid
+  rows={data}
+  columns={columns}
+  showToolbar={true}
+  checkboxSelection={true}
+/>
+```
 
-### Making a Progressive Web App
+### LoadingSpinner
+Indicateur de chargement centralisé.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```jsx
+<LoadingSpinner message="Chargement des données..." />
+```
 
-### Advanced Configuration
+### ErrorBoundary
+Gestion globale des erreurs React.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🧪 Scripts disponibles
 
-### Deployment
+- `npm start` - Démarre l'application en mode développement
+- `npm build` - Crée un build de production
+- `npm test` - Lance les tests
+- `npm eject` - Éjecte la configuration (irréversible)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🔧 Technologies utilisées
 
-### `npm run build` fails to minify
+- **React** 18.2.0 - Framework UI
+- **Material-UI** 5.14.x - Bibliothèque de composants
+- **Redux Toolkit** 1.9.x - Gestion d'état
+- **React Router** 6.16.x - Routing
+- **Formik** & **Yup** - Gestion des formulaires et validation
+- **Axios** - Client HTTP
+- **React Toastify** - Notifications
+- **@nivo** - Graphiques
+- **FullCalendar** - Calendrier
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📝 Améliorations récentes
+
+### Refactorisation majeure du code (Novembre 2024)
+
+- ✅ Création de composants réutilisables (StyledDataGrid, LoadingSpinner, ErrorBoundary)
+- ✅ Création de hooks personnalisés (useAuth, useToast, useColorMode)
+- ✅ Migration vers variables d'environnement pour la configuration
+- ✅ Amélioration de la gestion d'erreurs
+- ✅ Refactorisation du système d'authentification
+- ✅ Amélioration de la navigation avec react-router
+- ✅ Ajout de PropTypes pour la validation des props
+- ✅ Nettoyage et suppression des fichiers dupliqués
+- ✅ Amélioration de l'UI avec menu dropdown utilisateur
+- ✅ Correction de multiples bugs et typos
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou une pull request.
+
+## 📄 Licence
+
+Ce projet est sous licence privée.
+
+## 👤 Auteur
+
+Stoyann Velten
